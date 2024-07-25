@@ -10,20 +10,14 @@ use anchor_spl::metadata::{
     MetadataAccount,
     Metadata,
     CreateMetadataAccountsV3,
-    SetAndVerifySizedCollectionItem,
+    CreateMasterEditionV3,
+    SignMetadata,
+    create_master_edition_v3,
     create_metadata_accounts_v3,
-    set_and_verify_sized_collection_item,
+    sign_metadata,
     mpl_token_metadata::{
-        instructions::{
-            CreateMasterEditionV3Cpi, 
-            CreateMasterEditionV3CpiAccounts, 
-            CreateMasterEditionV3InstructionArgs, 
-            CreateMetadataAccountV3Cpi, 
-            CreateMetadataAccountV3CpiAccounts, 
-            CreateMetadataAccountV3InstructionArgs,
-        }, 
         types::{
-            Collection, 
+            CollectionDetails,
             Creator, 
             DataV2,
         },
@@ -46,17 +40,98 @@ pub mod token_lottery {
 
     pub fn initialize(ctx: Context<Initialize>, start: u64, end: u64, price: u64) -> Result<()> {
         ctx.accounts.token_lottery.bump = ctx.bumps.token_lottery;
-        ctx.accounts.token_lottery.mint = ctx.accounts.mint.key();
         ctx.accounts.token_lottery.lottery_start = start;
         ctx.accounts.token_lottery.lottery_end = end;
         ctx.accounts.token_lottery.price = price;
-        ctx.accounts.token_lottery.authority = ctx.accounts.signer.key();
+        ctx.accounts.token_lottery.authority = ctx.accounts.payer.key();
         ctx.accounts.token_lottery.randomness_account = Pubkey::default();
 
-        // Is this needed Jacob?
+        let lottery_account_key = &ctx.accounts.token_lottery.key();
+
         ctx.accounts.token_lottery.ticket_num = 0;
 
         // Create Collection Mint
+        let signer_seeds: &[&[&[u8]]] = &[&[
+            lottery_account_key.as_ref(),
+            &[ctx.bumps.collection_mint],
+        ]];
+
+        msg!("Creating mint accounts");
+        mint_to(
+            CpiContext::new_with_signer(
+                ctx.accounts.token_program.to_account_info(),
+                MintTo {
+                    mint: ctx.accounts.collection_mint.to_account_info(),
+                    to: ctx.accounts.collection_token_account.to_account_info(),
+                    authority: ctx.accounts.collection_mint.to_account_info(),
+                },
+                signer_seeds,
+            ),
+            1,
+        )?;
+
+        msg!("Creating metadata accounts");
+        create_metadata_accounts_v3(
+            CpiContext::new_with_signer(
+                ctx.accounts.token_metadata_program.to_account_info(),
+                CreateMetadataAccountsV3 {
+                    metadata: ctx.accounts.metadata.to_account_info(),
+                    mint: ctx.accounts.collection_mint.to_account_info(),
+                    mint_authority: ctx.accounts.collection_mint.to_account_info(), // use pda mint address as mint authority
+                    update_authority: ctx.accounts.collection_mint.to_account_info(), // use pda mint as update authority
+                    payer: ctx.accounts.payer.to_account_info(),
+                    system_program: ctx.accounts.system_program.to_account_info(),
+                    rent: ctx.accounts.rent.to_account_info(),
+                },
+                &signer_seeds,
+            ),
+            DataV2 {
+                name: NAME.to_string(),
+                symbol: SYMBOL.to_string(),
+                uri: URI.to_string(),
+                seller_fee_basis_points: 0,
+                creators: Some(vec![Creator {
+                    address: ctx.accounts.payer.key(),
+                    verified: false,
+                    share: 100,
+                }]),
+                collection: None,
+                uses: None,
+            },
+            true,
+            true,
+            Some(CollectionDetails::V1 { size: 0 }), // set as collection nft
+        )?;
+
+        msg!("Creating Master edition accounts");
+        create_master_edition_v3(
+            CpiContext::new_with_signer(
+                ctx.accounts.token_metadata_program.to_account_info(),
+                CreateMasterEditionV3 {
+                    payer: ctx.accounts.payer.to_account_info(),
+                    mint: ctx.accounts.collection_mint.to_account_info(),
+                    edition: ctx.accounts.master_edition.to_account_info(),
+                    mint_authority: ctx.accounts.collection_mint.to_account_info(),
+                    update_authority: ctx.accounts.collection_mint.to_account_info(),
+                    metadata: ctx.accounts.metadata.to_account_info(),
+                    token_program: ctx.accounts.token_program.to_account_info(),
+                    system_program: ctx.accounts.system_program.to_account_info(),
+                    rent: ctx.accounts.rent.to_account_info(),
+                },
+                &signer_seeds,
+            ),
+            Some(0),
+        )?;
+
+        msg!("verifying collection");
+        sign_metadata(CpiContext::new(
+            ctx.accounts.token_metadata_program.to_account_info(),
+            SignMetadata {
+                creator: ctx.accounts.collection_mint.to_account_info(),
+                metadata: ctx.accounts.metadata.to_account_info(),
+            },
+        ))?;
+
 
         Ok(())
     }
@@ -69,13 +144,6 @@ pub mod token_lottery {
             return Err(ErrorCode::LotteryNotOpen.into());
         }
 
-        let metadata = &ctx.accounts.metadata.to_account_info();
-        let master_edition = &ctx.accounts.master_edition.to_account_info();
-        let system_program = &ctx.accounts.system_program.to_account_info();
-        let spl_token_program = &ctx.accounts.token_program.to_account_info();
-        let spl_metadata_program = &ctx.accounts.token_metadata_program.to_account_info();
-
-        // Take Money
         system_program::transfer(
             CpiContext::new(
                 ctx.accounts.system_program.to_account_info(),
@@ -133,30 +201,10 @@ pub mod token_lottery {
             None,
         )?;
 
-        set_and_verify_sized_collection_item(
-            CpiContext::new_with_signer(
-                ctx.accounts.token_metadata_program.to_account_info(),
-                SetAndVerifySizedCollectionItem {
-                    metadata: ctx.accounts.metadata.to_account_info(),
-                    collection_authority: ctx.accounts.collection_mint.to_account_info(),
-                    payer: ctx.accounts.payer.to_account_info(),
-                    update_authority: ctx.accounts.collection_mint.to_account_info(),
-                    collection_mint: ctx.accounts.collection_mint.to_account_info(),
-                    collection_metadata: ctx.accounts.collection_metadata.to_account_info(),
-                    collection_master_edition: ctx
-                        .accounts
-                        .collection_master_edition
-                        .to_account_info(),
-                },
-                &signer_seeds,
-            ),
-            None,
-        )?;
-
         Ok(())
     }
 
-    pub fn commit_a_winner(ctx: Context<CommitWinner>, randomness_account: Pubkey) -> Result<()> {
+    pub fn commit_a_winner(ctx: Context<CommitWinner>) -> Result<()> {
         let clock = Clock::get()?;
         let token_lottery = &mut ctx.accounts.token_lottery;
 
@@ -287,47 +335,51 @@ pub struct BuyTicket<'info> {
 #[derive(Accounts)]
 pub struct Initialize<'info> {
     #[account(mut)]
-    pub signer: Signer<'info>,
+    pub payer: Signer<'info>,
 
     #[account(
         init,
-        payer = signer,
+        payer = payer,
         space = 8 + TokenLottery::INIT_SPACE,
         // Challenge: Make this be able to run more than 1 lottery at a time
         seeds = [b"token_lottery".as_ref()],
         bump
     )]
-    pub token_lottery: Account<'info, TokenLottery>,
-
-    pub mint: InterfaceAccount<'info, Mint>,
+    pub token_lottery: Box<Account<'info, TokenLottery>>,
 
     #[account(
         init,
-        payer = signer,
+        payer = payer,
         mint::decimals = 0,
         mint::authority = collection_mint,
         seeds = [token_lottery.key().as_ref()],
         bump,
     )]
-    pub collection_mint: InterfaceAccount<'info, Mint>,
+    pub collection_mint: Box<InterfaceAccount<'info, Mint>>,
 
+    /// CHECK: This account will be initialized by the metaplex program
     #[account(mut)]
-    pub metadata: Account<'info, MetadataAccount>,
+    pub metadata: UncheckedAccount<'info>,
 
+    /// CHECK: This account will be initialized by the metaplex program
     #[account(mut)]
-    pub master_edition: Account<'info, MasterEditionAccount>,
+    pub master_edition: UncheckedAccount<'info>,
 
     #[account(
         init_if_needed,
-        payer = signer,
-        associated_token::mint = collection_mint,
-        associated_token::authority = collection_token_account
+        payer = payer,
+        seeds = [b"collection_token_account".as_ref()],
+        bump,
+        token::mint = collection_mint,
+        token::authority = collection_token_account
     )]
-    pub collection_token_account: InterfaceAccount<'info, TokenAccount>,
+    pub collection_token_account: Box<InterfaceAccount<'info, TokenAccount>>,
 
     pub token_program: Interface<'info, TokenInterface>,
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub system_program: Program<'info, System>,
+    pub token_metadata_program: Program<'info, Metadata>,
+    pub rent: Sysvar<'info, Rent>,
 }
 
 #[account]
@@ -339,7 +391,6 @@ pub struct TokenLottery {
     pub lottery_end: u64,
     // Is it good practice to store SOL on an account used for something else?
     pub lottery_pot_amount: u64,
-    pub mint: Pubkey,
     pub ticket_num: u32,
     pub price: u64,
     pub randomness_account: Pubkey,
