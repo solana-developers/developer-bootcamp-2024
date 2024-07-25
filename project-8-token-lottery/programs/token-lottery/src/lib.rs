@@ -352,7 +352,7 @@ pub struct Initialize<'info> {
         payer = payer,
         mint::decimals = 0,
         mint::authority = collection_mint,
-        seeds = [token_lottery.key().as_ref()],
+        seeds = [b"collection_mint".as_ref()],
         bump,
     )]
     pub collection_mint: Box<InterfaceAccount<'info, Mint>>,

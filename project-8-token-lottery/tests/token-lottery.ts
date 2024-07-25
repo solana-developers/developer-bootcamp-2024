@@ -17,8 +17,10 @@ describe("token-lottery", () => {
 
   it("Is initialized!", async () => {
 
-    const mintKeypair = Keypair.generate();
-    const mint = mintKeypair.publicKey;
+    const mint = anchor.web3.PublicKey.findProgramAddressSync(
+      [Buffer.from('collection_mint')],
+      program.programId,
+    )[0];
 
     const metadata = anchor.web3.PublicKey.findProgramAddressSync(
         [Buffer.from('metadata'), TOKEN_METADATA_PROGRAM_ID.toBuffer(), mint.toBuffer()],
