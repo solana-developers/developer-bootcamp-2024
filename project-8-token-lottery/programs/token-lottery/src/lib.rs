@@ -39,20 +39,18 @@ pub mod token_lottery {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>, start: u64, end: u64, price: u64) -> Result<()> {
-        ctx.accounts.token_lottery.bump = ctx.bumps.token_lottery;
+        /*ctx.accounts.token_lottery.bump = ctx.bumps.token_lottery;
         ctx.accounts.token_lottery.lottery_start = start;
         ctx.accounts.token_lottery.lottery_end = end;
         ctx.accounts.token_lottery.price = price;
         ctx.accounts.token_lottery.authority = ctx.accounts.payer.key();
         ctx.accounts.token_lottery.randomness_account = Pubkey::default();
 
-        let lottery_account_key = &ctx.accounts.token_lottery.key();
-
-        ctx.accounts.token_lottery.ticket_num = 0;
+        ctx.accounts.token_lottery.ticket_num = 0;*/
 
         // Create Collection Mint
         let signer_seeds: &[&[&[u8]]] = &[&[
-            lottery_account_key.as_ref(),
+            b"collection_mint".as_ref(),
             &[ctx.bumps.collection_mint],
         ]];
 
@@ -91,7 +89,7 @@ pub mod token_lottery {
                 uri: URI.to_string(),
                 seller_fee_basis_points: 0,
                 creators: Some(vec![Creator {
-                    address: ctx.accounts.payer.key(),
+                    address: ctx.accounts.collection_mint.key(),
                     verified: false,
                     share: 100,
                 }]),
@@ -124,12 +122,13 @@ pub mod token_lottery {
         )?;
 
         msg!("verifying collection");
-        sign_metadata(CpiContext::new(
+        sign_metadata(CpiContext::new_with_signer(
             ctx.accounts.token_metadata_program.to_account_info(),
             SignMetadata {
                 creator: ctx.accounts.collection_mint.to_account_info(),
                 metadata: ctx.accounts.metadata.to_account_info(),
             },
+            &signer_seeds,
         ))?;
 
 
@@ -337,7 +336,7 @@ pub struct Initialize<'info> {
     #[account(mut)]
     pub payer: Signer<'info>,
 
-    #[account(
+    /*#[account(
         init,
         payer = payer,
         space = 8 + TokenLottery::INIT_SPACE,
@@ -345,13 +344,14 @@ pub struct Initialize<'info> {
         seeds = [b"token_lottery".as_ref()],
         bump
     )]
-    pub token_lottery: Box<Account<'info, TokenLottery>>,
+    pub token_lottery: Box<Account<'info, TokenLottery>>,*/
 
     #[account(
         init,
         payer = payer,
         mint::decimals = 0,
         mint::authority = collection_mint,
+        mint::freeze_authority = collection_mint,
         seeds = [b"collection_mint".as_ref()],
         bump,
     )]

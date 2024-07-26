@@ -4,7 +4,7 @@
 resolution = true
 skip-lint = false
 
-[programs.localnet]
+[programs.devnet]
 token_lottery = "2RTh2Y4e2N421EbSnUYTKdGqDHJH7etxZb3VrWDMpNMY"
 
 [registry]
