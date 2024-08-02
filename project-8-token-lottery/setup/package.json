@@ -4,11 +4,9 @@
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check"
   },
   "dependencies": {
-    "@coral-xyz/anchor": "^0.30.1",
+    "@coral-xyz/anchor": "^0.30.0",
     "@solana/spl-token": "^0.4.8",
-    "@switchboard-xyz/on-demand": "^1.2.16",
-    "anchor-bankrun": "^0.4.0",
-    "solana-bankrun": "^0.3.0"
+    "@switchboard-xyz/on-demand": "^1.2.15"
   },
   "devDependencies": {
     "@types/bn.js": "^5.1.0",
