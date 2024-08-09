@@ -1,0 +1,12 @@
+{
+  "name": "@voting-dapp/anchor",
+  "version": "0.0.1",
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.30.0",
+    "@solana/web3.js": "1.91.9",
+    "anchor-bankrun": "^0.4.0"
+  },
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "private": true
+}
