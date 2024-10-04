@@ -72,24 +72,16 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".nx/cache/project-graph.json",
-        "hash": "16373464661634019837"
+        "file": "tsconfig.base.json",
+        "hash": "9606626515238761227"
       },
       {
-        "file": ".nx/cache/terminalOutputs/1527831701458936138",
-        "hash": "16651248061585346388"
+        "file": ".nx/cache/terminalOutputs/17659135223371740655",
+        "hash": "4408530187645305164"
       },
       {
-        "file": ".nx/cache/1527831701458936138/terminalOutput",
-        "hash": "16651248061585346388"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "LICENSE",
-        "hash": "11790418032855049847"
+        "file": "package.json",
+        "hash": "11569341232099084780"
       },
       {
         "file": ".nx/cache/run.json",
@@ -100,16 +92,40 @@
         "hash": "1838281907459330133"
       },
       {
-        "file": ".nx/cache/1527831701458936138.commit",
-        "hash": "4664556114322093609"
-      },
-      {
         "file": "jest.config.ts",
         "hash": "3494843969422251966"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "9606626515238761227"
+        "file": "README.md",
+        "hash": "5700749519006011483"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": ".nx/cache/1527831701458936138/terminalOutput",
+        "hash": "16651248061585346388"
+      },
+      {
+        "file": ".nx/cache/1527831701458936138.commit",
+        "hash": "4664556114322093609"
+      },
+      {
+        "file": "vercel.json",
+        "hash": "1598408354266276258"
+      },
+      {
+        "file": ".nx/cache/project-graph.json",
+        "hash": "16373464661634019837"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "11790418032855049847"
+      },
+      {
+        "file": ".nx/cache/terminalOutputs/1527831701458936138",
+        "hash": "16651248061585346388"
       },
       {
         "file": ".nx/cache/terminalOutputs/2481288344116030866",
@@ -120,28 +136,12 @@
         "hash": "10934541929279078210"
       },
       {
-        "file": ".nx/cache/terminalOutputs/17659135223371740655",
-        "hash": "4408530187645305164"
-      },
-      {
         "file": ".nx/cache/file-map.json",
-        "hash": "4898754605926864227"
-      },
-      {
-        "file": "package.json",
-        "hash": "11569341232099084780"
-      },
-      {
-        "file": "vercel.json",
-        "hash": "1598408354266276258"
+        "hash": "6811765801032064612"
       },
       {
         "file": ".nx/cache/1527831701458936138/source",
         "hash": "14514348164134802499"
-      },
-      {
-        "file": "README.md",
-        "hash": "5700749519006011483"
       }
     ],
     "projectFileMap": {
