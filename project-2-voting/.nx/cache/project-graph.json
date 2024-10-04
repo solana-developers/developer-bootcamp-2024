@@ -1,0 +1,202 @@
+{
+  "nodes": {
+    "anchor": {
+      "name": "anchor",
+      "type": "lib",
+      "data": {
+        "root": "anchor",
+        "name": "anchor",
+        "targets": {
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "cache": true,
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json",
+              "{workspaceRoot}/.eslintignore",
+              "{workspaceRoot}/eslint.config.js"
+            ],
+            "options": {},
+            "configurations": {}
+          },
+          "build": {
+            "executor": "@nx/rollup:rollup",
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/anchor",
+              "main": "anchor/src/index.ts",
+              "tsConfig": "anchor/tsconfig.lib.json",
+              "assets": [],
+              "project": "anchor/package.json",
+              "compiler": "swc",
+              "format": [
+                "cjs",
+                "esm"
+              ]
+            },
+            "configurations": {}
+          },
+          "jest": {
+            "executor": "@nx/jest:jest",
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "passWithNoTests": true,
+              "jestConfig": "anchor/jest.config.ts"
+            },
+            "configurations": {
+              "ci": {
+                "ci": true,
+                "codeCoverage": true
+              }
+            }
+          },
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "anchor",
+              "commands": [
+                "anchor test"
+              ],
+              "parallel": false
+            },
+            "configurations": {}
+          },
+          "anchor": {
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "anchor",
+              "commands": [
+                "anchor"
+              ],
+              "parallel": false
+            },
+            "configurations": {}
+          },
+          "localnet": {
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "anchor",
+              "commands": [
+                "anchor localnet"
+              ],
+              "parallel": false
+            },
+            "configurations": {}
+          }
+        },
+        "$schema": "../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "anchor/src",
+        "projectType": "library",
+        "tags": [],
+        "implicitDependencies": []
+      }
+    },
+    "web": {
+      "name": "web",
+      "type": "app",
+      "data": {
+        "root": "web",
+        "targets": {
+          "build": {
+            "executor": "@nx/next:build",
+            "cache": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "defaultConfiguration": "production",
+            "options": {
+              "outputPath": "dist/web"
+            },
+            "configurations": {
+              "development": {
+                "outputPath": "web"
+              },
+              "production": {}
+            }
+          },
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "cache": true,
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json",
+              "{workspaceRoot}/.eslintignore",
+              "{workspaceRoot}/eslint.config.js"
+            ],
+            "options": {},
+            "configurations": {}
+          },
+          "serve": {
+            "executor": "@nx/next:server",
+            "defaultConfiguration": "development",
+            "options": {
+              "buildTarget": "web:build",
+              "dev": true,
+              "port": 3000
+            },
+            "configurations": {
+              "development": {
+                "buildTarget": "web:build:development",
+                "dev": true
+              },
+              "production": {
+                "buildTarget": "web:build:production",
+                "dev": false
+              }
+            }
+          },
+          "export": {
+            "executor": "@nx/next:export",
+            "options": {
+              "buildTarget": "web:build:production"
+            },
+            "configurations": {}
+          }
+        },
+        "name": "web",
+        "$schema": "../node_modules/nx/schemas/project-schema.json",
+        "sourceRoot": "web",
+        "projectType": "application",
+        "tags": [],
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "anchor": [],
+    "web": [
+      {
+        "source": "web",
+        "target": "anchor",
+        "type": "static"
+      }
+    ]
+  },
+  "version": "6.0"
+}
