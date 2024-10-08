@@ -45,7 +45,6 @@ If you're stuck, you can always refer to the following resources:
 | 8   | Token Vesting        |                     |
 | 9   | Token Lottery        |                     |
 | 10  | Lending              |                     |
-| 11  | Lossless Lottery     |                     |
-| 12  | Programmable Money   |                     |
-| 13  | Attack the Bank      |                     |
-| 14  | Production Readiness |                     |
+| 11  | Programmable Money   |                     |
+| 12  | Attack the Bank      |                     |
+| 13  | Production Readiness |                     |
