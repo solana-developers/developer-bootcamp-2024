@@ -6,7 +6,7 @@ It's used by the [https://github.com/solana-developers/professional-education](S
 
 We recommend creating a separate github repository for each project and commiting your code as you follow along the video.
 
-[![Program](https://ik.imagekit.io/mkpjlhtny/solpg_button_zWM8WlPKs.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1662621556513)](https://beta.solpg.io/67060f00cffcf4b13384d3dc)
+[![Favorites Program](https://ik.imagekit.io/mkpjlhtny/solpg_button_zWM8WlPKs.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1662621556513)](https://beta.solpg.io/67060f00cffcf4b13384d3dc)
 
 ## Running This Project
 
