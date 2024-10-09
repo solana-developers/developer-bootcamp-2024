@@ -1,150 +1,0 @@
-
-^D[1m[2mDetermining test suites to run...[22m[22m[999D[K
-
-[1mTest Suites: [22m0 of 2 total
-[1mTests:       [22m0 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        0 s, estimated 3 s
-[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbankrun.spec.ts[22m
-
-[1mTest Suites: [22m0 of 2 total
-[1mTests:       [22m0 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        0 s, estimated 3 s
-[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[0m[7m[1m[31m FAIL [39m[22m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbankrun.spec.ts[22m
-
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbankrun.spec.ts[22m
-
-[1mTest Suites: [22m0 of 2 total
-[1mTests:       [22m0 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        0 s, estimated 3 s
-[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A  [1m● [22mTest suite failed to run
-
-    Cannot find module 'solana-bankrun' from 'tests/bankrun.spec.ts'
-
-    [0m [90m 4 |[39m [36mimport[39m [33m*[39m [36mas[39m anchor [36mfrom[39m [32m'@coral-xyz/anchor'[39m[33m;[39m
-     [90m 5 |[39m [36mimport[39m { [33mBN[39m[33m,[39m [33mProgram[39m } [36mfrom[39m [32m"@coral-xyz/anchor"[39m[33m;[39m
-    [31m[1m>[22m[39m[90m 6 |[39m
-     [90m   |[39m [31m[1m^[22m[39m
-     [90m 7 |[39m
-     [90m 8 |[39m [36mconst[39m [33mIDL[39m [33m=[39m require([32m"../target/idl/voting.json"[39m)[33m;[39m
-     [90m 9 |[39m [36mimport[39m { [33mVoting[39m } [36mfrom[39m [32m'../target/types/voting'[39m[33m;[39m[0m
-
-      [2mat Resolver._throwModNotFoundError ([22m../node_modules/jest-resolve/build/resolver.js[2m:427:11)[22m
-      [2mat Object.<anonymous> ([22m[0m[36mtests/bankrun.spec.ts[39m[0m[2m:6:24)[22m
-
-
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbankrun.spec.ts[22m
-
-[1mTest Suites: [22m0 of 2 total
-[1mTests:       [22m0 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        0 s, estimated 3 s
-[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbankrun.spec.ts[22m
-
-[1mTest Suites: [22m0 of 2 total
-[1mTests:       [22m0 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        0 s, estimated 3 s
-[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 of 2 total
-[1mTests:       [22m0 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        0 s, estimated 3 s
-[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A(node:97246) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 of 2 total
-[1mTests:       [22m0 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        0 s, estimated 3 s
-[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 of 2 total
-[1mTests:       [22m[1m[32m1 passed[39m[22m, 1 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        0 s, estimated 3 s
-[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 of 2 total
-[1mTests:       [22m[1m[32m1 passed[39m[22m, 1 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        1 s, estimated 3 s
-[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 of 2 total
-[1mTests:       [22m[1m[32m2 passed[39m[22m, 2 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        1 s, estimated 3 s
-[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 of 2 total
-[1mTests:       [22m[1m[32m2 passed[39m[22m, 2 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        2 s, estimated 3 s
-[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[0m[7m[1m[32m PASS [39m[22m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 of 2 total
-[1mTests:       [22m[1m[32m2 passed[39m[22m, 2 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        2 s, estimated 3 s
-[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A  [1m● [22mConsole
-
-    [2mconsole.log[22m
-      Your transaction signature 2xB1o6v1DegSALGED1xHKwjJYqisiez5JUp3wJcraA5TVqnYWf2bKyTR2Cwt8ux4gZLoDPy3A8DqJV3iHKw71ZNi
-[2m[22m
-[2m      [2mat Object.log ([22m[2m[0m[36mtests/basic.spec.ts[39m[0m[2m:28:13)[22m[2m[22m
-
-    [2mconsole.log[22m
-      Your transaction signature 58tfEdszb8jroNap7DhvEZ4umbmgnaGh58NG1By9TdDfLKAH8DMzwuHeT3J7C9LFhxqpmJvMyidJwxbWKLnHEHbr
-[2m[22m
-[2m      [2mat Object.log ([22m[2m[0m[36mtests/basic.spec.ts[39m[0m[2m:55:13)[22m[2m[22m
-
-    [2mconsole.log[22m
-      Your transaction signature 4Uea4uqE3YTh1WydiP8bpSpmXdm3Vc8KkC9q9t4srAxrbfGFHAK1d3BX9zvAxHXwhNWdHgSxPV4dP8tWbjEJt7Vm
-[2m[22m
-[2m      [2mat Object.log ([22m[2m[0m[36mtests/basic.spec.ts[39m[0m[2m:66:13)[22m[2m[22m
-
-
-[0m[7m[33m[1m RUNS [22m[39m[27m[0m [0m[7m[37m anchor [39m[27m[0m [2mtests/[22m[1mbasic.spec.ts[22m
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, 1 of 2 total
-[1mTests:       [22m[1m[32m2 passed[39m[22m, 2 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        2 s, estimated 3 s
-[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, [1m[32m1 passed[39m[22m, 2 total
-[1mTests:       [22m[1m[32m3 passed[39m[22m, 3 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        2 s, estimated 3 s
-[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[33mA worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.[39m
-
-
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, [1m[32m1 passed[39m[22m, 2 total
-[1mTests:       [22m[1m[32m3 passed[39m[22m, 3 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        2 s, estimated 3 s
-[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[32m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[37m█[39m[K[1A[K[1A[K[1A[K[1A[K[1A[K[1A[999D[K
-[1mTest Suites: [22m[1m[31m1 failed[39m[22m, [1m[32m1 passed[39m[22m, 2 total
-[1mTests:       [22m[1m[32m3 passed[39m[22m, 3 total
-[1mSnapshots:   [22m0 total
-[1mTime:[22m        2.72 s, estimated 3 s
-[2mRan all test suites[22m[2m.[22m
