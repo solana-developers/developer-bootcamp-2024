@@ -33,21 +33,21 @@ If you're stuck, you can always refer to the following resources:
 
 ## Table of Contents
 
-| #   | Name                 | Video Tutorial Link |
-| --- | -------------------- | ------------------- |
-| 1   | Favorites            |                     |
-| 2   | Voting               |                     |
-| 3   | Blinks               |                     |
-| 4   | CRUD App             |                     |
-| 5   | Tokens               |                     |
-| 6   | NFTs                 |                     |
-| 7   | Poker Chip Swap      |                     |
-| 8   | Token Vesting        |                     |
-| 9   | Token Lottery        |                     |
-| 10  | Lending              |                     |
-| 11  | Programmable Money   |                     |
-| 12  | Attack the Bank      |                     |
-| 13  | Production Readiness |                     |
+| #   | Name                 |
+| --- | -------------------- |
+| 1   | [Favorites](https://www.youtube.com/watch?v=amAq-WHAFs8&t=622s)            |
+| 2   | [Voting](https://www.youtube.com/watch?v=amAq-WHAFs8&t=2262s)               |
+| 3   | [Blinks](https://www.youtube.com/watch?v=amAq-WHAFs8&t=6632s)               |
+| 4   | [CRUD App](https://www.youtube.com/watch?v=amAq-WHAFs8&t=9105s)             |
+| 5   | [Tokens](https://www.youtube.com/watch?v=amAq-WHAFs8&t=12891s)               |
+| 6   | [NFTs](https://www.youtube.com/watch?v=amAq-WHAFs8&t=13752s)                 |
+| 7   | [Poker Chip Swap](https://www.youtube.com/watch?v=amAq-WHAFs8&t=15922s)      |
+| 8   | [Token Vesting](https://www.youtube.com/watch?v=amAq-WHAFs8&t=20895s)        |
+| 9   | [Token Lottery](https://www.youtube.com/watch?v=amAq-WHAFs8&t=30677s)        |
+| 10  | [Lending](https://www.youtube.com/watch?v=HOdYZSe1uhE&t=0s)              |
+| 11  | [Programmable Money](https://www.youtube.com/watch?v=HOdYZSe1uhE&t=11292s)   |
+| 12  | [Attack the Bank](https://www.youtube.com/watch?v=HOdYZSe1uhE&t=20615s)      | 
+| 13  | [Production Readiness](https://www.youtube.com/watch?v=HOdYZSe1uhE&t=24025s) |
 
 ## Security Considerations
 
