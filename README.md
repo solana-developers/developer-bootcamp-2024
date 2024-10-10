@@ -48,3 +48,7 @@ If you're stuck, you can always refer to the following resources:
 | 11  | Programmable Money   |                     |
 | 12  | Attack the Bank      |                     |
 | 13  | Production Readiness |                     |
+
+## Security Considerations
+
+None of the projects within this bootcamp have been properly audited and may contain security vulnerabilities. Do not use any of the code in this bootcamp in production without a proper security audit.
