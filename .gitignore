@@ -3,6 +3,7 @@ yarn.lock
 package-lock.json
 target/
 .DS_Store
+.nx
 
 # Logs
 logs
