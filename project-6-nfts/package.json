@@ -1,0 +1,20 @@
+{
+  "name": "creating-nfts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@metaplex-foundation/mpl-token-metadata": "^3.2.1",
+    "@metaplex-foundation/umi-bundle-defaults": "^0.9.2",
+    "@solana-developers/helpers": "^2.5.6",
+    "@solana/web3.js": "^1.95.3",
+    "esrun": "^3.2.26",
+    "i": "^0.3.7",
+    "npm": "^10.9.0"
+  }
+}
