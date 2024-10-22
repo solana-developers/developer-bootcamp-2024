@@ -5,7 +5,7 @@
 <p align="center"><strong>Learn smart contract development and level up your career</strong></p>
 </div>
 
-Welcome to the repository for the full Blockchain Developer Bootcamp. This repository contains the full course material, code examples, and other resources for the course.
+Welcome to the repository for the full [Blockchain Developer Bootcamp](https://www.youtube.com/watch?v=amAq-WHAFs8). This repository contains the full course material, code examples, and other resources for the course.
 
 This bootcamp is for anyone interested in learning how to build on a blockchain. You do not require any knowledge of blockchains, smart contracts, or Rust to get started. We will cover everything you need to know to get starting building on the Solana blockchain today.
 
