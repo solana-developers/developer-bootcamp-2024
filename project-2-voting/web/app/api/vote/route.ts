@@ -18,10 +18,12 @@ export async function GET(request: Request) {
         {
           href: 'http://localhost:3000/api/vote?candidate=crunchy',
           label: 'Vote Crunchy',
+          type: "transaction"
         },
         {
           href: 'http://localhost:3000/api/vote?candidate=smooth',
           label: 'Vote Smooth',
+          type: "transaction"
         }
       ],
     },
