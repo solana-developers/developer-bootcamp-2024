@@ -21,7 +21,7 @@ describe("token-lottery", () => {
 
   before("Loading switchboard program", async () => {
     const switchboardIDL = await anchor.Program.fetchIdl(
-      sb.SB_ON_DEMAND_PID, 
+      sb.ON_DEMAND_MAINNET_PID, // new updated version
       {connection: new anchor.web3.Connection("https://mainnet.helius-rpc.com/?api-key=792d0c03-a2b0-469e-b4ad-1c3f2308158c")}
     );
     switchboardProgram = new anchor.Program(switchboardIDL, provider);
