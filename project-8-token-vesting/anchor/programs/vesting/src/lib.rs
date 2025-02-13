@@ -27,7 +27,7 @@ pub mod vesting {
         ctx: Context<CreateEmployeeAccount>,
         start_time: i64,
         end_time: i64,
-        total_amount: i64,
+        total_amount: u64,
         cliff_time: i64
     ) -> Result<()> {
         *ctx.accounts.employee_account = EmployeeAccount {
