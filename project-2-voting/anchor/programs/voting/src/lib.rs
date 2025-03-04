@@ -23,11 +23,13 @@ pub mod voting {
                                 _poll_id: u64, 
                                 candidate: String) -> Result<()> {
         ctx.accounts.candidate_account.candidate_name = candidate;
-        ctx.accounts.poll_account.poll_option_index += 1;
+       
         Ok(())
     }
 
     pub fn vote(ctx: Context<Vote>, _poll_id: u64, _candidate: String) -> Result<()> {
+        //This vote Api is where the voting logic happens. When a vote is cast, it's appropriate to update the poll_option_index to reflect the current state of the poll.
+        ctx.accounts.poll_account.poll_option_index += 1;
         let candidate_account = &mut ctx.accounts.candidate_account;
         let current_time = Clock::get()?.unix_timestamp;
 
