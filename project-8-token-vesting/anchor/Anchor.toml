@@ -1,4 +1,6 @@
 [toolchain]
+solana_version = "2.1.0"
+package_manager = "npm"
 
 [features]
 resolution = true
