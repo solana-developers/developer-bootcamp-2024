@@ -1,11 +1,9 @@
 "use client";
 
-import {
-  getJournalProgram,
-  getJournalProgramId,
-  JournalIDL,
-} from "@journal/anchor";
-import { Program } from "@coral-xyz/anchor";
+import * as idl from "../../../anchor/target/idl/journal.json";
+import type { Journal } from "../../../anchor/target/types/journal";
+
+import { getJournalProgram, getJournalProgramId } from "@journal/anchor";
 import { useConnection } from "@solana/wallet-adapter-react";
 import { Cluster, PublicKey } from "@solana/web3.js";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -14,7 +12,7 @@ import { useCluster } from "../cluster/cluster-data-access";
 import { useAnchorProvider } from "../solana/solana-provider";
 import { useTransactionToast } from "../ui/ui-layout";
 import { useMemo } from "react";
-import { get } from "http";
+import { Program } from "@coral-xyz/anchor";
 
 interface CreateEntryArgs {
   title: string;
@@ -31,7 +29,7 @@ export function useJournalProgram() {
     () => getJournalProgramId(cluster.network as Cluster),
     [cluster]
   );
-  const program = getJournalProgram(provider);
+  const program = new Program<Journal>(idl, provider);
 
   const accounts = useQuery({
     queryKey: ["journal", "all", { cluster }],
