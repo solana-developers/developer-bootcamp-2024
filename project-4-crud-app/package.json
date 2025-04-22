@@ -19,7 +19,7 @@
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
     "@solana/wallet-adapter-react-ui": "^0.9.35",
-    "@solana/web3.js": "1.90.0",
+    "@solana/web3.js": "1.98.1",
     "@swc/helpers": "~0.5.2",
     "@tabler/icons-react": "2.47.0",
     "@tailwindcss/typography": "0.5.10",
