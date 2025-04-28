@@ -13,17 +13,11 @@ pub mod favorites {
 
     // Our instruction handler! It sets the user's favorite number and color
     pub fn set_favorites(context: Context<SetFavorites>, number: u64, color: String, hobbies: Vec<String>) -> Result<()> {
-        let user_public_key = context.accounts.user.key();
         msg!("Greetings from {}", context.program_id);
-        msg!(
-            "User {user_public_key}'s favorite number is {number}, favorite color is: {color}",
-        );
-
-        msg!(
-            "User's hobbies are: {:?}",
-            hobbies
-        ); 
-
+        let use_public_key = context.accounts.user.key();
+        msg!("User {}'s favorite number is {}, favorite color is {}, and their hobbies are {:?}",
+        user_public_key, number, color, hobbies);
+        
         context.accounts.favorites.set_inner(Favorites {
             number,
             color,
