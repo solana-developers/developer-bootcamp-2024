@@ -1,20 +1,22 @@
-'use client';
+"use client";
 
-import { useWallet } from '@solana/wallet-adapter-react';
-import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
-import { IconRefresh } from '@tabler/icons-react';
-import { useQueryClient } from '@tanstack/react-query';
-import { useMemo, useState } from 'react';
-import { AppModal, ellipsify } from '../ui/ui-layout';
-import { useCluster } from '../cluster/cluster-data-access';
-import { ExplorerLink } from '../cluster/cluster-ui';
+import { useWallet } from "@solana/wallet-adapter-react";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import { IconRefresh } from "@tabler/icons-react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
+import { AppModal, ellipsify } from "../ui/ui-layout";
+import { useCluster } from "../cluster/cluster-data-access";
+import { ExplorerLink } from "../cluster/cluster-ui";
 import {
   useGetBalance,
   useGetSignatures,
   useGetTokenAccounts,
   useRequestAirdrop,
   useTransferSol,
-} from './account-data-access';
+} from "./account-data-access";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import "react-perfect-scrollbar/dist/css/styles.css";
 
 export function AccountBalance({ address }: { address: PublicKey }) {
   const query = useGetBalance({ address });
@@ -22,10 +24,10 @@ export function AccountBalance({ address }: { address: PublicKey }) {
   return (
     <div>
       <h1
-        className="text-5xl font-bold cursor-pointer"
+        className="text-xl md:text-5xl font-bold cursor-pointer"
         onClick={() => query.refetch()}
       >
-        {query.data ? <BalanceSol balance={query.data} /> : '...'} SOL
+        {query.data ? <BalanceSol balance={query.data} /> : "..."} SOL
       </h1>
     </div>
   );
@@ -53,9 +55,9 @@ export function AccountBalanceCheck({ address }: { address: PublicKey }) {
           is not found on this cluster.
         </span>
         <button
-          className="btn btn-xs btn-neutral"
+          className="btn btn-neutral"
           onClick={() =>
-            mutation.mutateAsync(1).catch((err) => console.log(err))
+            mutation.mutateAsync(3).catch((err) => console.log(err))
           }
         >
           Request Airdrop
@@ -92,7 +94,7 @@ export function AccountButtons({ address }: { address: PublicKey }) {
       />
       <div className="space-x-2">
         <button
-          disabled={cluster.network?.includes('mainnet')}
+          disabled={cluster.network?.includes("mainnet")}
           className="btn btn-xs lg:btn-md btn-outline"
           onClick={() => setShowAirdropModal(true)}
         >
@@ -139,7 +141,7 @@ export function AccountTokens({ address }: { address: PublicKey }) {
                 onClick={async () => {
                   await query.refetch();
                   await client.invalidateQueries({
-                    queryKey: ['getTokenAccountBalance'],
+                    queryKey: ["getTokenAccountBalance"],
                   });
                 }}
               >
@@ -159,59 +161,63 @@ export function AccountTokens({ address }: { address: PublicKey }) {
           {query.data.length === 0 ? (
             <div>No token accounts found.</div>
           ) : (
-            <table className="table border-4 rounded-lg border-separate border-base-300">
-              <thead>
-                <tr>
-                  <th>Public Key</th>
-                  <th>Mint</th>
-                  <th className="text-right">Balance</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items?.map(({ account, pubkey }) => (
-                  <tr key={pubkey.toString()}>
-                    <td>
-                      <div className="flex space-x-2">
-                        <span className="font-mono">
-                          <ExplorerLink
-                            label={ellipsify(pubkey.toString())}
-                            path={`account/${pubkey.toString()}`}
-                          />
-                        </span>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex space-x-2">
-                        <span className="font-mono">
-                          <ExplorerLink
-                            label={ellipsify(account.data.parsed.info.mint)}
-                            path={`account/${account.data.parsed.info.mint.toString()}`}
-                          />
-                        </span>
-                      </div>
-                    </td>
-                    <td className="text-right">
-                      <span className="font-mono">
-                        {account.data.parsed.info.tokenAmount.uiAmount}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+            <div className="h-[140px]">
+              <PerfectScrollbar>
+                <table className="table border-4 rounded-lg border-separate border-base-300">
+                  <thead>
+                    <tr>
+                      <th>Public Key</th>
+                      <th>Mint</th>
+                      <th className="text-right">Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {items?.map(({ account, pubkey }) => (
+                      <tr key={pubkey.toString()}>
+                        <td>
+                          <div className="flex space-x-2">
+                            <span className="font-mono">
+                              <ExplorerLink
+                                label={ellipsify(pubkey.toString())}
+                                path={`account/${pubkey.toString()}`}
+                              />
+                            </span>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="flex space-x-2">
+                            <span className="font-mono">
+                              <ExplorerLink
+                                label={ellipsify(account.data.parsed.info.mint)}
+                                path={`account/${account.data.parsed.info.mint.toString()}`}
+                              />
+                            </span>
+                          </div>
+                        </td>
+                        <td className="text-right">
+                          <span className="font-mono">
+                            {account.data.parsed.info.tokenAmount.uiAmount}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
 
-                {(query.data?.length ?? 0) > 5 && (
-                  <tr>
-                    <td colSpan={4} className="text-center">
-                      <button
-                        className="btn btn-xs btn-outline"
-                        onClick={() => setShowAll(!showAll)}
-                      >
-                        {showAll ? 'Show Less' : 'Show All'}
-                      </button>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+                    {(query.data?.length ?? 0) > 5 && (
+                      <tr>
+                        <td colSpan={4} className="text-center">
+                          <button
+                            className="btn btn-xs btn-outline"
+                            onClick={() => setShowAll(!showAll)}
+                          >
+                            {showAll ? "Show Less" : "Show All"}
+                          </button>
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </PerfectScrollbar>
+            </div>
           )}
         </div>
       )}
@@ -255,61 +261,65 @@ export function AccountTransactions({ address }: { address: PublicKey }) {
           {query.data.length === 0 ? (
             <div>No transactions found.</div>
           ) : (
-            <table className="table border-4 rounded-lg border-separate border-base-300">
-              <thead>
-                <tr>
-                  <th>Signature</th>
-                  <th className="text-right">Slot</th>
-                  <th>Block Time</th>
-                  <th className="text-right">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items?.map((item) => (
-                  <tr key={item.signature}>
-                    <th className="font-mono">
-                      <ExplorerLink
-                        path={`tx/${item.signature}`}
-                        label={ellipsify(item.signature, 8)}
-                      />
-                    </th>
-                    <td className="font-mono text-right">
-                      <ExplorerLink
-                        path={`block/${item.slot}`}
-                        label={item.slot.toString()}
-                      />
-                    </td>
-                    <td>
-                      {new Date((item.blockTime ?? 0) * 1000).toISOString()}
-                    </td>
-                    <td className="text-right">
-                      {item.err ? (
-                        <div
-                          className="badge badge-error"
-                          title={JSON.stringify(item.err)}
-                        >
-                          Failed
-                        </div>
-                      ) : (
-                        <div className="badge badge-success">Success</div>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-                {(query.data?.length ?? 0) > 5 && (
-                  <tr>
-                    <td colSpan={4} className="text-center">
-                      <button
-                        className="btn btn-xs btn-outline"
-                        onClick={() => setShowAll(!showAll)}
-                      >
-                        {showAll ? 'Show Less' : 'Show All'}
-                      </button>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+            <div className="h-[140px]">
+              <PerfectScrollbar>
+                <table className="md:table w-full border-4 rounded-lg border-separate border-base-300 overflow-x-auto">
+                  <thead>
+                    <tr>
+                      <th>Signature</th>
+                      <th className="text-right">Slot</th>
+                      <th>Block Time</th>
+                      <th className="text-right">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {items?.map((item) => (
+                      <tr key={item.signature} className="text-xs">
+                        <th className="font-mono">
+                          <ExplorerLink
+                            path={`tx/${item.signature}`}
+                            label={ellipsify(item.signature, 8)}
+                          />
+                        </th>
+                        <td className="font-mono text-right">
+                          <ExplorerLink
+                            path={`block/${item.slot}`}
+                            label={item.slot.toString()}
+                          />
+                        </td>
+                        <td>
+                          {new Date((item.blockTime ?? 0) * 1000).toISOString()}
+                        </td>
+                        <td className="text-right">
+                          {item.err ? (
+                            <div
+                              className="badge badge-error"
+                              title={JSON.stringify(item.err)}
+                            >
+                              Failed
+                            </div>
+                          ) : (
+                            <div className="badge badge-success">Success</div>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                    {(query.data?.length ?? 0) > 5 && (
+                      <tr>
+                        <td colSpan={4} className="text-center">
+                          <button
+                            className="btn btn-xs btn-outline"
+                            onClick={() => setShowAll(!showAll)}
+                          >
+                            {showAll ? "Show Less" : "Show All"}
+                          </button>
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </PerfectScrollbar>
+            </div>
           )}
         </div>
       )}
@@ -350,7 +360,7 @@ function ModalAirdrop({
   address: PublicKey;
 }) {
   const mutation = useRequestAirdrop({ address });
-  const [amount, setAmount] = useState('2');
+  const [amount, setAmount] = useState("2");
 
   return (
     <AppModal
@@ -386,8 +396,8 @@ function ModalSend({
 }) {
   const wallet = useWallet();
   const mutation = useTransferSol({ address });
-  const [destination, setDestination] = useState('');
-  const [amount, setAmount] = useState('1');
+  const [destination, setDestination] = useState("");
+  const [amount, setAmount] = useState("1");
 
   if (!address || !wallet.sendTransaction) {
     return <div>Wallet not connected</div>;

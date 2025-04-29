@@ -1,21 +1,22 @@
 [toolchain]
+anchor_version = "0.30.1"
 
 [features]
 resolution = true
 skip-lint = false
 
-[programs.localnet]
-vesting = "GFdLg11UBR8ZeePW43ZyD1gY4z4UQ96LPa22YBgnn4z8"
+[programs.devnet]
+vesting = "BnRyuRkBiWQ6D3Tsu5n4AuzzHjSbFHBcXKs63e51p1ft"
 
 [registry]
-url = "https://api.apr.dev"
+url = "https://api.devnet.solana.com"
 
 [provider]
-cluster = "Localnet"
+cluster = "Devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "../node_modules/.bin/nx run anchor:jest"
+test = "../node_modules/.bin/jest --preset ts-jest"
 
 [test]
 startup_wait = 5000

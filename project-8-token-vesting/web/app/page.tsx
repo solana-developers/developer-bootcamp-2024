@@ -1,5 +1,5 @@
-import DashboardFeature from '@/components/dashboard/dashboard-feature';
+import AccountListFeature from "@/components/account/account-list-feature";
 
 export default function Page() {
-  return <DashboardFeature />;
+  return <AccountListFeature />;
 }

@@ -13,6 +13,15 @@ Create Vesting Account: Set up a vesting account for a company, specifying the c
 Create Employee Vesting: Establish a vesting schedule for an employee, including start and end times, total amount, and a cliff period.
 Claim Tokens: Allows employees to claim their vested tokens after the cliff period, based on the time elapsed and the amount vested.
 
+## Program Updates
+-  Introduced the initial_fund_amount parameter in the create_vesting_account function, ensuring that the vesting treasury is pre-funded at the time of account creation.
+-  Implemented token transfer logic to move the initial fund from the signer's associated token account to the vesting treasury.
+
+## Fronend Updates
+-   Significantly enhanced the UI for a modern and fully responsive experience, including a redesigned navbar.
+-   Added a mint token feature, allowing users to mint new tokens smoothly.
+-   Integrated a claim token functionality, enabling users to withdraw vested tokens efficiently.
+
 ## Program Functions
 
 - `create_vesting_account`: Initializes a vesting account for a company and initializes a vesting token account to hold the entire token allocation.
