@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useWallet } from '@solana/wallet-adapter-react';
-import { ExplorerLink } from '../cluster/cluster-ui';
-import { WalletButton } from '../solana/solana-provider';
-import { AppHero, ellipsify } from '../ui/ui-layout';
-import { useBasicProgram } from './basic-data-access';
-import { BasicCreate, BasicProgram } from './basic-ui';
+import { useWallet } from "@solana/wallet-adapter-react";
+import { ExplorerLink } from "../cluster/cluster-ui";
+import { WalletButton } from "../solana/solana-provider";
+import { AppHero, ellipsify } from "../ui/ui-layout";
+import { useBasicProgram } from "./basic-data-access";
+import { PollCreate, BasicProgram } from "./basic-ui";
 
 export default function BasicFeature() {
   const { publicKey } = useWallet();
@@ -23,7 +23,7 @@ export default function BasicFeature() {
             label={ellipsify(programId.toString())}
           />
         </p>
-        <BasicCreate />
+        <PollCreate />
       </AppHero>
       <BasicProgram />
     </div>
