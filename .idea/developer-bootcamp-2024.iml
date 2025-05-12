@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="EMPTY_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/project-1-favorites/programs/favorites/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-10-lending/programs/lending/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-11-programmable-money/program/programs/stablecoin/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-12-attack-the-bank/bank_one/programs/bank_one/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-12-attack-the-bank/bank_three/programs/bank_three/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-12-attack-the-bank/bank_three/programs/fake_bank/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-12-attack-the-bank/bank_two/programs/bank_two/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-13-getting-to-production/anchor/programs/voting/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-2-voting/anchor/programs/voting/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-3-blinks/anchor/programs/voting/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-4-crud-app/anchor/programs/journal/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-7-swap/programs/swap/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-8-token-vesting/anchor/programs/vesting/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/project-8-token-vesting/anchor/programs/vesting/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/project-9-token-lottery/programs/token-lottery/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/project-1-favorites/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-10-lending/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-11-programmable-money/program/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-12-attack-the-bank/bank_one/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-12-attack-the-bank/bank_three/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-12-attack-the-bank/bank_two/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-13-getting-to-production/anchor/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-2-voting/anchor/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-3-blinks/anchor/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-4-crud-app/anchor/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-7-swap/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-8-token-vesting/anchor/target" />
+      <excludeFolder url="file://$MODULE_DIR$/project-9-token-lottery/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
