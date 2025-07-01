@@ -16,6 +16,7 @@ pub mod voting {
         ctx.accounts.poll_account.poll_description = description;
         ctx.accounts.poll_account.poll_voting_start = start_time;
         ctx.accounts.poll_account.poll_voting_end = end_time;
+        msg!("init poll called");
         Ok(())
     }
 
@@ -24,10 +25,17 @@ pub mod voting {
                                 candidate: String) -> Result<()> {
         ctx.accounts.candidate_account.candidate_name = candidate;
         ctx.accounts.poll_account.poll_option_index += 1;
+        msg!("init candidate called");
         Ok(())
     }
 
     pub fn vote(ctx: Context<Vote>, _poll_id: u64, _candidate: String) -> Result<()> {
+        /*
+            Please note here we can get Candidate mutable reference, it only indicates
+            that we can modify it in-memory, not indicating the data on solana chain
+            has been changed. If write permission is not given on `Vote` metadata,
+            then solana will silently ignore the change without modifying it.
+         */
         let candidate_account = &mut ctx.accounts.candidate_account;
         let current_time = Clock::get()?.unix_timestamp;
 
@@ -70,6 +78,8 @@ pub struct InitializeCandidate<'info> {
     #[account(mut)]
     pub signer: Signer<'info>,
 
+    // poll_option_index is changed, so need set mutable
+    #[account(mut)]
     pub poll_account: Account<'info, PollAccount>,
 
     #[account(
@@ -98,10 +108,11 @@ pub struct Vote<'info> {
     pub poll_account: Account<'info, PollAccount>,
 
     #[account(
-        mut,
+        mut, // Vote() will modify a given candidate
         seeds = [poll_id.to_le_bytes().as_ref(), candidate.as_ref()],
         bump)]
     pub candidate_account: Account<'info, CandidateAccount>,
+    // no system_account because no creating account in Vote()
 }
 
 #[account]
