@@ -23,6 +23,7 @@ pub mod voting {
                                 _poll_id: u64, 
                                 candidate: String) -> Result<()> {
         ctx.accounts.candidate_account.candidate_name = candidate;
+        msg!("Initializing candidate: {}", ctx.accounts.candidate_account.candidate_name);
         ctx.accounts.poll_account.poll_option_index += 1;
         Ok(())
     }
@@ -70,6 +71,7 @@ pub struct InitializeCandidate<'info> {
     #[account(mut)]
     pub signer: Signer<'info>,
 
+    #[account(mut)]
     pub poll_account: Account<'info, PollAccount>,
 
     #[account(
