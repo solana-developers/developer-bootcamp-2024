@@ -35,6 +35,17 @@ pub mod voting {
 
     pub fn vote(ctx: Context<Vote>, _candidate_name: String, _poll_id: u64) -> Result<()> {
         let candidate = &mut ctx.accounts.candidate;
+        let poll = &ctx.accounts.poll;
+        let current_time = Clock::get()?.unix_timestamp;
+
+        if current_time < (poll.poll_start as i64) {
+            return Err(ErrorCode::VotingNotStarted.into());
+        }
+
+        if current_time > (poll.poll_end as i64) {
+            return Err(ErrorCode::VotingEnded.into());
+        }
+
         candidate.candidate_votes += 1;
         msg!("Voted for candidate: {}", candidate.candidate_name);
         msg!("Votes: {}", candidate.candidate_votes);
@@ -120,4 +131,12 @@ pub struct Poll {
     pub poll_start: u64,
     pub poll_end: u64,
     pub candidate_amount: u64,
+}
+
+#[error_code]
+pub enum ErrorCode {
+    #[msg("Voting has not started yet")]
+    VotingNotStarted,
+    #[msg("Voting has ended")]
+    VotingEnded,
 }
